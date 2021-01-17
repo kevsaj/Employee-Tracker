@@ -25,6 +25,33 @@ const showEmployees = () => {
     function (err, res) {
       if (err) throw err;
       console.table(res);
+      trackerfunction();
     }
   )
 }
+
+const trackerfunction = () => {
+  inquirer.prompt({
+      name: 'action',
+      type: 'list',
+      message: 'What would you like to do, yo?',
+      choices: [
+        'Add Employee, yo',
+        'View Employees, yo',
+        'EXIT'
+      ]
+    })
+    .then(answer => {
+      switch (answer.action) {
+        case 'Add Employee':
+          addEmployee();
+          break;
+        case 'View Employees':
+          viewEmployees();
+          break;
+        default:
+          //EXIT
+          connection.end();
+      }
+    });
+};
