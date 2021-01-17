@@ -14,6 +14,8 @@ CREATE TABLE DEPARTMENT( id INT NOT NULL auto_increment,
                         last_name VARCHAR ( 30 ) NOT NULL,
                         PRIMARY KEY ( id ) );
 CREATE TABLE _ROLE( id INT NOT NULL auto_increment,
+                        first_name VARCHAR ( 30 ) NOT NULL,
+                        last_name VARCHAR ( 30 ) NOT NULL,
                         title VARCHAR ( 30 ) NOT NULL,
                         department_id INT NOT NULL,
                         salary DECIMAL NOT NULL,

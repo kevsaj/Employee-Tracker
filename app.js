@@ -20,11 +20,11 @@ connection.connect((err) => {
 });
 
 const showEmployees = () => {
-    const query = connection.query(
-        `SELECT * FROM employeesdb.employees`,
-        function (err, res) {
-            if (err) throw err;
-            console.table(res);
-        }
-    )
+  const query = connection.query(
+    `SELECT * FROM employeesdb.employees`,
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+    }
+  )
 }
