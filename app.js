@@ -46,8 +46,8 @@ const trackerfunction = () => {
         case 'Add Employee':
           addEmployee();
           break;
-        case 'View Employees':
-          viewEmployees();
+        case 'Show Employees':
+          showEmployees();
           break;
         default:
           //EXIT
@@ -55,3 +55,31 @@ const trackerfunction = () => {
       }
     });
 };
+
+const addEmployee = () => {
+  inquirer.prompt([
+      {
+        type: 'input',
+        message: 'Input employee\'s first name yo:',
+        name: 'firstName'
+      },
+      {
+        type: 'input',
+        message: 'Input employee\'s last name yo:',
+        name: 'lastName'
+      }
+    ])
+    .then((inputs) => {
+      connection.query(
+          "insert into employees table ?", 
+          {
+            first_name: inputs.firstName,
+            last_name: inputs.lastName
+          }
+        ),
+        (err, res) => {
+          if (err) console.log(err);
+        }
+      trackerfunction();
+    })
+}
