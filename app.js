@@ -43,11 +43,11 @@ const trackerfunction = () => {
     })
     .then(answer => {
       switch (answer.action) {
-        case 'Add Employee':
+        case 'Add Employee, yo':
           addEmployee();
           break;
-        case 'Show Employees':
-          showEmployees();
+        case 'View Employees, yo':
+          viewEmployees();
           break;
         default:
           //EXIT
@@ -57,8 +57,15 @@ const trackerfunction = () => {
 };
 
 const addEmployee = () => {
-  inquirer.prompt([
-      {
+  let currentRoles = [];
+  connection.query(
+    'SELECT title FROM _ROLE',
+    function (err, res) {
+      if (err) throw err;
+      res.forEach(title => currentRoles.push(title.title))
+    }
+  )
+  inquirer.prompt([{
         type: 'input',
         message: 'Input employee\'s first name yo:',
         name: 'firstName'
@@ -71,8 +78,7 @@ const addEmployee = () => {
     ])
     .then((inputs) => {
       connection.query(
-          "insert into employees table ?", 
-          {
+          "insert into employees table ?", {
             first_name: inputs.firstName,
             last_name: inputs.lastName
           }
