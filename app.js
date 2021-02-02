@@ -89,3 +89,14 @@ const addEmployee = () => {
       trackerfunction();
     })
 }
+
+const viewEmployees = () => {
+  const query = connection.query(
+    'SELECT id, first_name, last_name, title, department, salary, manager FROM employees',
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      trackerfunction();
+    }
+  )
+}
