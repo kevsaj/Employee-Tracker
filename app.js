@@ -16,7 +16,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) throw err;
-  showEmployees();
+  trackerfunction();
 });
 
 const showEmployees = () => {
@@ -38,6 +38,7 @@ const trackerfunction = () => {
       choices: [
         'Add Employee, yo',
         'View Employees, yo',
+        'Show all my Employees, yo',
         'EXIT'
       ]
     })
@@ -48,6 +49,9 @@ const trackerfunction = () => {
           break;
         case 'View Employees, yo':
           viewEmployees();
+          break;
+        case 'Show all my Employees, yo':
+          showEmployees();
           break;
         default:
           //EXIT
@@ -74,13 +78,26 @@ const addEmployee = () => {
         type: 'input',
         message: 'Input employee\'s last name yo:',
         name: 'lastName'
+      },
+      {
+        type: 'input',
+        message: 'What is the employee\'s title ?',
+        name: 'title'
+      },
+      {
+        type: 'input',
+        message: 'Enter department if applicable?',
+        name: 'department',
       }
+
     ])
     .then((inputs) => {
       connection.query(
           "insert into employees table ?", {
             first_name: inputs.firstName,
-            last_name: inputs.lastName
+            last_name: inputs.lastName,
+            title: inputs.title,
+            department: inputs.department
           }
         ),
         (err, res) => {
