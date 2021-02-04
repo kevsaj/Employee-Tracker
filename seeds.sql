@@ -10,8 +10,7 @@ CREATE TABLE EMPLOYEES( id INT NOT NULL auto_increment,
                         manager VARCHAR ( 80 ) NOT NULL,
                         PRIMARY KEY ( id ) );
 CREATE TABLE DEPARTMENT( id INT NOT NULL auto_increment,
-                        first_name VARCHAR ( 30 ) NOT NULL,
-                        last_name VARCHAR ( 30 ) NOT NULL,
+                        department_name VARCHAR ( 30 ) NOT NULL,
                         PRIMARY KEY ( id ) );
 CREATE TABLE _ROLE( id INT NOT NULL auto_increment,
                         first_name VARCHAR ( 30 ) NOT NULL,

@@ -39,6 +39,8 @@ const trackerfunction = () => {
         'Add Employee, yo',
         'View Employees, yo',
         'Show all my Employees, yo',
+        'Add Department, yo',
+        'Show all Departments, yo',
         'EXIT'
       ]
     })
@@ -52,6 +54,12 @@ const trackerfunction = () => {
           break;
         case 'Show all my Employees, yo':
           showEmployees();
+          break;
+        case 'Add Department, yo':
+          addDepartment();
+          break;
+        case 'Show all Departments, yo':
+          showDepartments();
           break;
         default:
           //EXIT
@@ -89,7 +97,6 @@ const addEmployee = () => {
         message: 'Enter department if applicable?',
         name: 'department',
       }
-
     ])
     .then((inputs) => {
       connection.query(
@@ -116,4 +123,53 @@ const viewEmployees = () => {
       trackerfunction();
     }
   )
+}
+
+const addDepartment = () => {
+  inquirer.prompt([{
+      type: 'input',
+      message: 'Enter the name of the new department yo:',
+      name: 'title'
+    }])
+    .then((inputs) => {
+      connection.query(
+          'INSERT into department table ?', {
+            title: inputs.department
+          }
+        ),
+        (err, res) => {
+          if (err) throw err;
+        }
+    })
+}
+
+const showDepartments = () => {
+  connection.query(
+    'select * from departments',
+    (err, res) => {
+      if (err) throw err;
+      console.table(res);
+      trackerfunction();
+    }
+  )
+}
+
+const addRole = () => {
+  inquirer.prompt([{
+        type: 'input',
+        message: 'Enter new role:',
+        name: 'title'
+      }
+    ])
+    .then((responses) => {
+      connection.query(
+          'insert into roles set ?', {
+            title: responses.title
+          }
+        ),
+        (err, res) => {
+          if (err) throw err;
+        }
+        trackerfunction();
+    })
 }
