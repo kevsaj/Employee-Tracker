@@ -10,7 +10,7 @@ This is my README for Assignment 11
 
 Page is live: [Video]()
 
-![Should Look like this lol](/Assets/employee-tracker.gif)
+![Should Look like this lol](/Assets/app.js.gif)
 # Installation
 * Learn Node, Inquirer, and MySQL magic!
 * Get Motivated
