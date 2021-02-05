@@ -41,7 +41,9 @@ const trackerfunction = () => {
         'Show all my Employees, yo',
         'Add Department, yo',
         'Show all Departments, yo',
-        'EXIT'
+        'Add Employee Role, yo',
+        'EXIT, yo',
+        'Restart'
       ]
     })
     .then(answer => {
@@ -61,9 +63,14 @@ const trackerfunction = () => {
         case 'Show all Departments, yo':
           showDepartments();
           break;
-        default:
-          //EXIT
+        case 'Add Employee Role, yo':
+          addRole();
+          break;
+        case 'EXIT, yo':
           connection.end();
+          break;
+        default:
+          trackerfunction();
       }
     });
 };
