@@ -8,7 +8,7 @@ This is my README for Assignment 11
 * [Credits](#Credits)
 * [License](#License)
 
-Page is live: [Video]()
+Page is live: [Video](https://github.com/kevsaj/Employee-Tracker/blob/main/Assets/app.js.gif)
 
 ![Should Look like this lol](/Assets/app.js.gif)
 # Installation
