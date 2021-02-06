@@ -176,6 +176,7 @@ const addRole = () => {
         ),
         (err, res) => {
           if (err) throw err;
+          console.table(res);
         }
         trackerfunction();
     })
